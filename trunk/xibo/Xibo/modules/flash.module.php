@@ -164,7 +164,7 @@ END;
 		    		<td><input id="name" name="name" type="text"></td>
 				</tr>
 				<tr>
-		    		<td><label for="duration" title="The duration in seconds this flash should be displayed (may be overridden on each layout)">Duration<span class="required">*</span></label></td>
+		    		<td><label for="duration" title="The duration in seconds this flash should be displayed (may be overridden on each layout)">Duration (s)<span class="required">*</span></label></td>
 		    		<td><input id="duration" name="duration" type="text" value="$this->duration"></td>
 					<td><label for="permissionid">Sharing<span class="required">*</span></label></td>
 					<td>

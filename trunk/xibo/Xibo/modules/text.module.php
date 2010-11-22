@@ -58,7 +58,7 @@ class text extends Module
 				<tr>
 		    		<td><label for="direction" title="The Direction this text should move, if any">Direction<span class="required">*</span></label></td>
 		    		<td>$direction_list</td>
-		    		<td><label for="duration" title="The duration in seconds this webpage should be displayed">Duration<span class="required">*</span></label></td>
+		    		<td><label for="duration" title="The duration in seconds this webpage should be displayed">Duration (s)<span class="required">*</span></label></td>
 		    		<td><input id="duration" name="duration" type="text"></td>		
 				</tr>
 				<tr>

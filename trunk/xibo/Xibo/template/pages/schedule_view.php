@@ -48,6 +48,18 @@ defined('XIBO') or die("Sorry, you are not allowed to directly access this page.
 				</td>
 			</tr>
 		</table>
+		<div class="SecondNav">
+			<div align = "left">
+				<a title="Go back a step"  href="index.php?p=layout">
+					<span>Back</span>
+				</a>
+			</div>
+			<div align = "right">
+				<a title="Complete"  href="index.php?p=Dashboard">
+					<span>Finish</span>
+				</a>
+			</div>		
+		</div>			
 	</div>
 	<div id="form_footer">
 		<div id="form_footer_left">
