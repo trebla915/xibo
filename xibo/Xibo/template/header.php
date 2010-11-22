@@ -97,6 +97,7 @@ $datemanager	= new DateManager($db);
 ?>
 
 	<div id="container">
+	
 		<div id="headercontainer">
 	  		<div id="header"></div>
 			<div id="headerback">
@@ -112,6 +113,7 @@ $datemanager	= new DateManager($db);
 		</div>
 		<div id="navigation">
 			<ul id="nav">
+				<li><a href="index.php?p=content">Wizard</a></li>
 				<?php
 					// Always have access to your own homepage
 					echo '<li><a href="index.php?p=' . $homepage . '">Dashboard</a></li>';
@@ -138,6 +140,7 @@ $datemanager	= new DateManager($db);
 							
 							$menuTitle = $title;
 							
+						
 							echo '<li><ul>';
 							
 							while ($menuItem = $mgmMenu->GetNextMenuItem())
@@ -152,7 +155,7 @@ $datemanager	= new DateManager($db);
 								if ($p == $uri) $class = 'current ' . $class;
 								
 								$href = 'index.php?p=' . $uri . '&' . $args;
-									
+							
 								echo '<li><a href="' . $href . '" class="' . $class . '">' . $title . '</a></li>';
 							}
 							

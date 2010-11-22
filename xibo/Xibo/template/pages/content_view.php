@@ -43,7 +43,13 @@ $msgShowFilter	= __('Show Filter');
 			</ul>
 		</div>
 		<?php $this->LibraryFilter(); ?>
-
+		<div class="SecondNav">
+					<div align="right">
+						<a title="Go to the next step"  href="index.php?p=layout" align="right">
+						<span>Next</span>
+						</a>
+					</div>
+		</div>	
 	</div>	
 	<div id="form_footer">
 		<div id="form_footer_left">

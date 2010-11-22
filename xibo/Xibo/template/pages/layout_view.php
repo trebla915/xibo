@@ -37,29 +37,54 @@ $msgShowFilter	= __('Show Filter');
 			<li><a href="index.php?p=layout&" ><span>Save</span></a></li>
 			<li><a href="index.php?p=dashboard&" ><span>Exit</span></a></li>
 			</ul>
+		</div>
 			<table>		
-			<tr><td></td>
-			<td>
-				<div class="title">
-					<h4>Layout Design - <?php echo $this->layout ?></h4>
-					</div>
-					<div class="formbody">
-						<div class='buttons'>
-						<a id="background_button" class="XiboFormButton" href="<?php echo $this->EditBackgroundHref(); ?>" title="Background"><div class="button_text">Background</div></a> 
-						<a id="edit_button" class="XiboFormButton" href="<?php echo $this->EditPropertiesHref(); ?>" title="Layout Properties"><div class="button_text">Properties</div></a> 		
-					</div></div></td>
-			</tr>
-			<tr>
-				<td><?php $this->LayoutFilter();?></td>
-				<td>
-					
-					<div class="formbody">
-					<?php $this->RenderDesigner();?>
-					</div>
-				</td>
-				<td><?php /*$this->RegionOptions();*/?></td>
-					
+				<tr>
+					<td></td>
+					<td>
+						<div class="title">
+							<h4>Layout Design - <?php echo $this->layout ?></h4>
+						</div>
+						<div class="formbody">
+							<div class='buttons'>
+								<a id="background_button" class="XiboFormButton" href="<?php //echo $this->EditBackgroundHref(); ?>" title="Background"><div class="button_text">Background</div></a> 
+								<a id="edit_button" class="XiboFormButton" href="<?php //echo $this->EditPropertiesHref(); ?>" title="Layout Properties"><div class="button_text">Properties</div></a> 		
+							</div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>	
+						<?php $this->LayoutFilter();?>
+							
+					</td>
+					<td>
+						
+						<div class="formbody">
+						<?php
+							if( $_GET['layoutid'] > 0 ) 
+							{
+								echo $this->RenderDesigner();
+							}	
+						?>
+						</div>
+					</td>
+					<td></td>
+				</tr>		
 			</table>
+			 
+		<div class="SecondNav">
+			<div align="left">
+				<a title="Go back a step"  href="index.php?p=content">
+					<span>Back</span>
+				</a>
+			</div>	
+			
+			<div align="right">		
+				<a title="Go to the next step"  href="index.php?p=schedule">
+					<span>Next</span>
+				</a>
+			</div>		
 		</div>
 	
 			</div>
@@ -70,5 +95,4 @@ $msgShowFilter	= __('Show Filter');
 		</div>
 		<div id="form_footer_right">
 		</div>
-	</div>
 </div>

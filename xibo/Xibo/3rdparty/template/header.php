@@ -151,8 +151,7 @@ $datemanager	= new DateManager($db);
 								// Extra style for the current one
 								if ($p == $uri) $class = 'current ' . $class;
 								
-								$href = 'index.php?p=' . $uri . '&' . $args;
-									
+								$href = 'index.php?p=' . $uri . '&' . $args;	
 								echo '<li><a href="' . $href . '" class="' . $class . '">' . $title . '</a></li>';
 							}
 							

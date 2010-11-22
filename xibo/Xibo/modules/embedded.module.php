@@ -51,7 +51,7 @@ class embedded extends Module
 			<input type="hidden" id="iRegionId" name="regionid" value="$regionid">
 			<table>
 				<tr>
-		    		<td><label for="duration" title="The duration in seconds this webpage should be displayed">Duration<span class="required">*</span></label></td>
+		    		<td><label for="duration" title="The duration in seconds this webpage should be displayed">Duration (s)<span class="required">*</span></label></td>
 		    		<td><input id="duration" name="duration" type="text"></td>	
 				</tr>
 				<tr>
