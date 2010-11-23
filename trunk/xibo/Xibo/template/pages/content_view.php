@@ -25,6 +25,30 @@ $msgMediaDet	= __('Add media to the Library');
 $msgFilter		= __('Filter');
 $msgShowFilter	= __('Show Filter');
 
+//FT Edit: Added progress bar
+$progressBar = <<<END
+
+		<div align="center">
+			<img src = "img/progressbar/progressbarxibo1.jpg" usemap = "#progressbar"></img>
+			<map name = "progressbar">
+				<area shape = "rect" href = "index.php?p=content&wizard=1" coords = "24,158,199,301" title="Upload Media"></area>
+				<area shape = "rect" href = "index.php?p=layout&wizard=1" coords = "200,158,394,301" title="Create Layout"></area>
+				<area shape = "rect" href = "index.php?p=schedule&wizard=1" coords = "395,158,604,301" title="Schedules Displays"></area>
+			</map>
+		</div>		
+END;
+
+//FT Edit:  Added next/back button
+$buttons = <<<END
+		<div class="SecondNav">
+			<div align="right">
+				<a title="Go to the next step"  href="index.php?p=layout&wizard=1" align="right">
+					<span>Next</span>
+				</a>
+			</div>
+		</div>
+END;
+
 ?>
 <div id="form_container">
 	<div id="form_header">
@@ -35,6 +59,14 @@ $msgShowFilter	= __('Show Filter');
 	</div>
 	
 	<div id="form_body">
+		
+		<!-- FT Edit: If the user is going through the wizard, display the progress bar -->
+		<?php
+			if( $_GET['wizard'] > 0 ) 
+			{
+				echo $progressBar;
+			}
+		?>
 		<div class="SecondNav">
 			<!-- Maybe at a later date we could have these buttons generated from the DB - and therefore passed through the security system ? -->
 			<ul>
@@ -43,13 +75,15 @@ $msgShowFilter	= __('Show Filter');
 			</ul>
 		</div>
 		<?php $this->LibraryFilter(); ?>
-		<div class="SecondNav">
-					<div align="right">
-						<a title="Go to the next step"  href="index.php?p=layout" align="right">
-						<span>Next</span>
-						</a>
-					</div>
-		</div>	
+		
+		<!-- FT Edit: If the user is going through the wizard, display next/back buttons -->
+		<?php
+			if( $_GET['wizard'] > 0 ) 
+			{
+				echo $buttons;
+			}
+		?>
+			
 	</div>	
 	<div id="form_footer">
 		<div id="form_footer_left">

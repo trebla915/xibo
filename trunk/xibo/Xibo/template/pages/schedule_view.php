@@ -20,6 +20,35 @@
  */
 defined('XIBO') or die("Sorry, you are not allowed to directly access this page.<br /> Please press the back button in your browser.");
 
+//FT Edit: Added progress bar
+$progressBar = <<<END
+
+		<div align="center">
+			<img src = "img/progressbar/progressbarxibo1.jpg" usemap = "#progressbar"></img>
+			<map name = "progressbar">
+				<area shape = "rect" href = "index.php?p=content&wizard=1" coords = "24,158,199,301" title="Upload Media"></area>
+				<area shape = "rect" href = "index.php?p=layout&wizard=1" coords = "200,158,394,301" title="Create Layout"></area>
+				<area shape = "rect" href = "index.php?p=schedule&wizard=1" coords = "395,158,604,301" title="Schedules Displays"></area>
+			</map>
+		</div>		
+END;
+
+//FT Edit:  Added next/back button
+$buttons = <<<END
+	<div class="SecondNav">
+			<div align="left">
+				<a title="Go back a step"  href="index.php?p=layout&wizard=1">
+					<span>Back</span>
+				</a>
+			</div>	
+			
+			<div align="right">		
+				<a title="Finish"  href="index.php?p=dashboard">
+					<span>Finish</span>
+				</a>
+			</div>
+	</div>				
+END;
 ?>
 <div id="form_container">
 	<div id="form_header">
@@ -30,6 +59,13 @@ defined('XIBO') or die("Sorry, you are not allowed to directly access this page.
 	</div>
 	
 	<div id="form_body">
+		<!-- FT Edit: If the user is going through the wizard, display the progress bar -->
+		<?php
+			if( $_GET['wizard'] > 0 ) 
+			{
+				echo $progressBar;
+			}
+		?>
 		
 		<table id="CalendarTable" width="100%" cellpadding=0 cellspacing=0>
 			<tr>
@@ -48,18 +84,13 @@ defined('XIBO') or die("Sorry, you are not allowed to directly access this page.
 				</td>
 			</tr>
 		</table>
-		<div class="SecondNav">
-			<div align = "left">
-				<a title="Go back a step"  href="index.php?p=layout">
-					<span>Back</span>
-				</a>
-			</div>
-			<div align = "right">
-				<a title="Complete"  href="index.php?p=Dashboard">
-					<span>Finish</span>
-				</a>
-			</div>		
-		</div>			
+		<!-- FT Edit: If the user is going through the wizard, display next/back buttons -->
+			<?php
+				if( $_GET['wizard'] > 0 ) 
+				{
+					echo $buttons;
+				}
+			?>		
 	</div>
 	<div id="form_footer">
 		<div id="form_footer_left">
