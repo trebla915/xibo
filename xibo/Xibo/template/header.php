@@ -113,8 +113,10 @@ $datemanager	= new DateManager($db);
 		</div>
 		<div id="navigation">
 			<ul id="nav">
-				<li><a href="index.php?p=content">Wizard</a></li>
+				<!-- FT Edit: added Wizard button -->
+				<li><a href="index.php?p=content&wizard=1">Get Started Here</a></li>
 				<?php
+					// FT Edit: removed the dashboard link;
 					// Always have access to your own homepage
 					echo '<li><a href="index.php?p=' . $homepage . '">Dashboard</a></li>';
 				

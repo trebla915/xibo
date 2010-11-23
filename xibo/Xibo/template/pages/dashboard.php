@@ -30,9 +30,13 @@ defined('XIBO') or die("Sorry, you are not allowed to directly access this page.
 
 	<div id="form_body">
 			<div id="dashbuttons">
+			<!-- FT Edit: Changed what items appear on the dashboard.  Used static links instead of dynamically generated
+			links so no db changes need to be made.  May revert back to dynamically generated later. -->
 				<?php
+				
+				
 					// Put a menu here
-					if (!$menu = new MenuManager($db, $user, 'Dashboard')) trigger_error($menu->message, E_USER_ERROR);
+					/*if (!$menu = new MenuManager($db, $user, 'Dashboard')) trigger_error($menu->message, E_USER_ERROR);
 
 					while ($menuItem = $menu->GetNextMenuItem())
 					{
@@ -57,13 +61,33 @@ defined('XIBO') or die("Sorry, you are not allowed to directly access this page.
 							</div>
 END;
 						echo $out;
-					}
+					}*/
 				?>
+				<div class="dashicons">
+					<a id="content_button" alt="Get Started Here" href="index.php?p=content&wizard=1">
+					<img class="dash_button" src="img/dashboard/content.png?">
+					<span class="dash_text">Get Started Here</span></a>
+				</div>
+				<div class="dashicons">
+					<a id="content_button" alt="Upload Media" href="index.php?p=content&">
+					<img class="dash_button" src="img/dashboard/content.png">
+					<span class="dash_text">Upload Media</span></a>
+				</div>
+				<div class="dashicons">
+					<a id="playlist_button" alt="Create Layout" href="index.php?p=layout&">
+					<img class="dash_button" src="img/dashboard/presentations.png">
+					<span class="dash_text">Create Layout</span></a>
+				</div>
+				<div class="dashicons">
+					<a id="schedule_button" alt="Schedule Displays" href="index.php?p=schedule&">
+					<img class="dash_button" src="img/dashboard/scheduleview.png">
+					<span class="dash_text">Schedule Displays</span></a>
+				</div>
 				<?php
-					if ($_SESSION['usertype']==1)
+					/*if ($_SESSION['usertype']==1)
 					{
-						echo 'Emergency button <a href = "http://localhost//xibo/emergency.class.php">here</a>';
-					}
+						echo 'Emergency button <a href = "emergency.class.php">here</a>';
+					}*/
 				?>
 			</div>
 	</div>
