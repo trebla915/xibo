@@ -693,6 +693,12 @@ END;
 END;
 				}
 				//<OPTION href = "index.php?p=layout&modify=true&layoutid=' . $layoutid . '" onclick="window.location = $(this).attr(\'href\')">$layout</OPTION></a>
+				
+				
+				if( $_GET['wizard'] > 0 ) 
+				{
+					$layoutid .= "&wizard=1&";
+				}
 				$output .= <<<END
 				$title
 				

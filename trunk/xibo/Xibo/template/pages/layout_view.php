@@ -28,7 +28,7 @@ $msgShowFilter	= __('Show Filter');
 $progressBar = <<<END
 
 		<div align="center">
-			<img src = "img/progressbar/progressbarxibo1.jpg" usemap = "#progressbar"></img>
+			<img src = "img/progressbar/progressbarxibo2.jpg" usemap = "#progressbar"></img>
 			<map name = "progressbar">
 				<area shape = "rect" href = "index.php?p=content&wizard=1" coords = "24,158,199,301" title="Upload Media"></area>
 				<area shape = "rect" href = "index.php?p=layout&wizard=1" coords = "200,158,394,301" title="Create Layout"></area>
