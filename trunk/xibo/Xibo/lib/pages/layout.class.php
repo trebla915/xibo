@@ -41,7 +41,7 @@ class layoutDAO
 	//background properties
 	private $backgroundImage;
 	private $backgroundColor;
-	
+	public $wizard = 0;
 	/**
 	 * Layout Page Logic
 	 * @return 
@@ -135,8 +135,9 @@ class layoutDAO
 		return false;
 	}
 	
-	function LayoutFilter() 
+	function LayoutFilter($wizard) 
 	{
+		$this->wizard = $wizard;
 		$db 	=& $this->db;
 		
 		$layout = ""; //3
@@ -633,6 +634,7 @@ END;
 
 		
 		//<div class="info_table">
+		//FT edit: instead of a table, generate a list of layouts
 		$output = <<<END
 		
 		<FORM NAME="nav">
@@ -695,13 +697,14 @@ END;
 				//<OPTION href = "index.php?p=layout&modify=true&layoutid=' . $layoutid . '" onclick="window.location = $(this).attr(\'href\')">$layout</OPTION></a>
 				
 				
-				if( $_GET['wizard'] > 0 ) 
+				//FT Edit: if in wizard mode, make sure the user stays in the mode
+				if( $this->wizard > 0) 
 				{
-					$layoutid .= "&wizard=1&";
+					$layoutid .= "&wizard=1";
 				}
+				
 				$output .= <<<END
 				$title
-				
 				<OPTION VALUE="index.php?p=layout&modify=true&layoutid=$layoutid"> $layout</option>
 				
 END;

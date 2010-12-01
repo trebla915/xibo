@@ -28,11 +28,11 @@ $msgShowFilter	= __('Show Filter');
 $progressBar = <<<END
 
 		<div align="center">
-			<img src = "img/progressbar/progressbarxibo2.jpg" usemap = "#progressbar"></img>
+			<img src = "img/progressbar/newprogressbar2.png" usemap = "#progressbar"></img>
 			<map name = "progressbar">
-				<area shape = "rect" href = "index.php?p=content&wizard=1" coords = "24,158,199,301" title="Upload Media"></area>
-				<area shape = "rect" href = "index.php?p=layout&wizard=1" coords = "200,158,394,301" title="Create Layout"></area>
-				<area shape = "rect" href = "index.php?p=schedule&wizard=1" coords = "395,158,604,301" title="Schedules Displays"></area>
+				<area shape = "rect" href = "index.php?p=content&wizard=1" coords = "15,30,325,95" title="Upload Media"></area>
+				<area shape = "rect" href = "index.php?p=layout&wizard=1" coords = "326,30,650,95" title="Create Layout"></area>
+				<area shape = "rect" href = "index.php?p=schedule&wizard=1" coords = "651,30,970,95" title="Schedules Displays"></area>
 			</map>
 		</div>		
 END;
@@ -65,6 +65,7 @@ END;
 		<?php
 			if( $_GET['wizard'] > 0 ) 
 			{
+				$this->wizard = 1;
 				echo $progressBar;
 			}
 		?>
@@ -85,21 +86,21 @@ END;
 						</div>
 						<div class="formbody">
 							<div class='buttons'>
-								<a id="background_button" class="XiboFormButton" href="<?php //echo $this->EditBackgroundHref(); ?>" title="Background"><div class="button_text">Background</div></a> 
-								<a id="edit_button" class="XiboFormButton" href="<?php //echo $this->EditPropertiesHref(); ?>" title="Layout Properties"><div class="button_text">Properties</div></a> 		
+								<a id="background_button" class="XiboFormButton" href="<?php echo $this->EditBackgroundHref(); ?>" title="Background"><div class="button_text">Background</div></a> 
+								<a id="edit_button" class="XiboFormButton" href="<?php echo $this->EditPropertiesHref(); ?>" title="Layout Properties"><div class="button_text">Properties</div></a> 		
 							</div>
 						</div>
 					</td>
 				</tr>
 				<tr>
 					<td>	
-						<?php $this->LayoutFilter();?>
+						<?php $this->LayoutFilter(1);?>
 							
 					</td>
 					<td>
 						
 						<div class="formbody">
-						<!-- FT Edit:  -->
+						<!-- FT Edit:  If the user is not editing a layout don't display the designer-->
 						<?php
 							if( $_GET['layoutid'] > 0 ) 
 							{
