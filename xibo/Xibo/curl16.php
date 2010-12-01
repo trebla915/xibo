@@ -11,7 +11,7 @@ $ch = curl_init();
 // Follow any Location headers
 curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
 
-curl_setopt($ch, CURLOPT_URL, 'localhost/xibo/curl17.php');
+curl_setopt($ch, CURLOPT_URL, '128.195.18.82/xibo/curl17.php');
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 
 // Alert cURL to the fact that we're doing a POST, and pass the associative array for POSTing.
