@@ -41,7 +41,7 @@ class layoutDAO
 	//background properties
 	private $backgroundImage;
 	private $backgroundColor;
-	public $wizard = 0;
+	public $wizard = 1;
 	/**
 	 * Layout Page Logic
 	 * @return 
@@ -137,7 +137,7 @@ class layoutDAO
 	
 	function LayoutFilter($wizard) 
 	{
-		$this->wizard = $wizard;
+		$this->wizard = 1;
 		$db 	=& $this->db;
 		
 		$layout = ""; //3
