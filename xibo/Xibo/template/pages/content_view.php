@@ -29,11 +29,11 @@ $msgShowFilter	= __('Show Filter');
 $progressBar = <<<END
 
 		<div align="center">
-			<img src = "img/progressbar/progressbarxibo1.jpg" usemap = "#progressbar"></img>
+			<img src = "img/progressbar/newprogressbar1.png" usemap = "#progressbar"></img>
 			<map name = "progressbar">
-				<area shape = "rect" href = "index.php?p=content&wizard=1" coords = "24,158,199,301" title="Upload Media"></area>
-				<area shape = "rect" href = "index.php?p=layout&wizard=1" coords = "200,158,394,301" title="Create Layout"></area>
-				<area shape = "rect" href = "index.php?p=schedule&wizard=1" coords = "395,158,604,301" title="Schedules Displays"></area>
+				<area shape = "rect" href = "index.php?p=content&wizard=1" coords = "15,30,325,95" title="Upload Media"></area>
+				<area shape = "rect" href = "index.php?p=layout&wizard=1" coords = "326,30,650,95" title="Create Layout"></area>
+				<area shape = "rect" href = "index.php?p=schedule&wizard=1" coords = "651,30,970,95" title="Schedules Displays"></area>
 			</map>
 		</div>		
 END;

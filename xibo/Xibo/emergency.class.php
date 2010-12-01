@@ -1,6 +1,12 @@
 <p>IP Adresses of all displays</p>
 <?php
 
+	$ch = curl_init();
+	curl_setopt($ch, CURLOPT_URL, 'http://google.com');
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	
+	$html = curl_exec($ch);
+
 
 	$link = mysql_connect("localhost", "xibo", "xibo");
 	if (!$link)

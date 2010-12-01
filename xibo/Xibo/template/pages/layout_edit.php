@@ -19,6 +19,8 @@
  * along with Xibo.  If not, see <http://www.gnu.org/licenses/>.
  */
 defined('XIBO') or die("Sorry, you are not allowed to directly access this page.<br /> Please press the back button in your browser."); 
+
+
 ?>
 <div id="form_container">
 	<div id="form_header">
@@ -28,7 +30,7 @@ defined('XIBO') or die("Sorry, you are not allowed to directly access this page.
 		</div>
 	</div>
 	
-	<div id="form_body">
+	<div id="form_body">	
 		<div class='buttons'>
 			<a id="background_button" class="XiboFormButton" href="<?php echo $this->EditBackgroundHref(); ?>" title="Background"><div class="button_text">Background</div></a> 
 			<a id="edit_button" class="XiboFormButton" href="<?php echo $this->EditPropertiesHref(); ?>" title="Layout Properties"><div class="button_text">Properties</div></a> 		
