@@ -42,6 +42,45 @@ $helpLink 	= $help->Link();
 
 $datemanager	= new DateManager($db);
  
+//FT Edit: Added progress bar
+$barImg = '';
+if( $_GET['p'] == "content" )
+{
+	$barImg= <<<END
+			<img src = "img/ftimgs/progressbarsmall1.png" usemap = "#progressbar"></img>
+END;
+	
+}
+else if( $_GET['p'] == "layout" )
+{
+	$barImg= <<<END
+			<img src = "img/ftimgs/progressbarsmall2.png" usemap = "#progressbar"></img>
+END;
+}
+else if( $_GET['p'] == "schedule" )
+{
+	$barImg= <<<END
+			<img src = "img/ftimgs/progressbarsmall3.png" usemap = "#progressbar"></img>
+END;
+}
+else
+{
+	$barImg= <<<END
+			<img src = "img/ftimgs/progressbarsmall0.png" usemap = "#progressbar"></img>
+END;
+}
+$progressBar = <<<END
+
+		<div align="center">
+			$barImg
+			<map name = "progressbar">
+				<area shape = "rect" href = "index.php?p=content&wizard=1" coords = "6,15,195,58" title="Upload Media"></area>
+				<area shape = "rect" href = "index.php?p=layout&wizard=1" coords = "196,15,392,58" title="Create Layout"></area>
+				<area shape = "rect" href = "index.php?p=schedule&wizard=1" coords = "393,15,586,58" title="Schedules Displays"></area>
+			</map>
+		</div>		
+END;
+
 ?>
 <!DOCTYPE html PUBLIC "-//W3C/DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -99,26 +138,31 @@ $datemanager	= new DateManager($db);
 	<div id="container">
 	
 		<div id="headercontainer">
-	  		<div id="header"></div>
-			<div id="headerback">
+		<div style="background-color:white; text-align:left;font-size:16px; font-family:Times New Roman;width:35%;">
 				<ul>
 					<?php displayMessage(); ?>
-					<li><?php echo $username; ?></li>
-					<li><a id="XiboClock" class="XiboFormButton" href="index.php?p=clock&q=ShowTimeInfo" title="<?php echo __('Click to show more time information'); ?>"><?php echo $datemanager->GetClock(); ?></a></li>
-					<li><a class="XiboFormButton" href="index.php?p=index&q=About" title="<?php echo __('About Xibo'); ?>"><?php echo __('About'); ?></a></li>
-					<li><a title="Show <?php echo ucfirst($p); ?> Help" class="XiboHelpButton" href="<?php echo $helpLink; ?>"><?php echo __('Help'); ?></a></li>
-					<li><a title="Logout" href="index.php?q=logout">Logout</a></li>
+					<li style="display: inline; padding-right:20px;padding-left:20px;"><?php echo $username; ?></li>
+					<li style="display: inline; padding-right:20px;padding-left:20px;"><a id="XiboClock" class="XiboFormButton" href="index.php?p=clock&q=ShowTimeInfo" title="<?php echo __('Click to show more time information'); ?>"><?php echo $datemanager->GetClock(); ?></a></li>
+					<li style="display: inline; padding-right:20px;padding-left:20px;"><a class="XiboFormButton" href="index.php?p=index&q=About" title="<?php echo __('About Xibo'); ?>"><?php echo __('About'); ?></a></li>
+					<li style="display: inline; padding-right:20px;padding-left:20px;"><a title="Show <?php echo ucfirst($p); ?> Help" class="XiboHelpButton" href="<?php echo $helpLink; ?>"><?php echo __('Help'); ?></a></li>
+					<li style="display: inline; padding-right:20px;padding-left:20px;"><a title="Logout" href="index.php?q=logout">Logout</a></li>
 				</ul>
+				
 			</div>
+			<div><a href="index.php?p=dashboard"><img src = "img/ftimgs/header1.png"></a></div>
+	  		
+			
 		</div>
+		
 		<div id="navigation">
-			<ul id="nav">
+
+			<ul id="nav"">
 				<!-- FT Edit: added Wizard button -->
-				<li><a href="index.php?p=content&wizard=1">Get Started Here</a></li>
+				<li><b><a href="index.php?p=content&wizard=1">Get Started Here</a></b></li>
 				<?php
 					// FT Edit: removed the dashboard link;
 					// Always have access to your own homepage
-					echo '<li><a href="index.php?p=' . $homepage . '">Dashboard</a></li>';
+					echo '<li><b><a href="index.php?p=' . $homepage . '">Dashboard</a></b></li>';
 				
 					// Put a menu here
 					if (!$menu = new MenuManager($db, $user, 'Top Nav')) trigger_error($menu->message, E_USER_ERROR);
@@ -158,7 +202,7 @@ $datemanager	= new DateManager($db);
 								
 								$href = 'index.php?p=' . $uri . '&' . $args;
 							
-								echo '<li><a href="' . $href . '" class="' . $class . '">' . $title . '</a></li>';
+								echo '<li><b><a href="' . $href . '" class="' . $class . '">' . $title . '</a></b></li>';
 							}
 							
 							echo '</ul><a href="#" class="' . $class . '">' . $menuTitle . '</a></li>';
@@ -167,13 +211,24 @@ $datemanager	= new DateManager($db);
 						{
 							$href = 'index.php?p=' . $uri . '&' . $args;
 							
-							echo '<li class="' . $class . '"><a href="' . $href . '" class="' . $class . '">' . $title . '</a></li>';
+							echo '<li class="' . $class . '"><b><a href="' . $href . '" class="' . $class . '">' . $title . '</a></b></li>';
 						}
 					}
 				?>
 			</ul>
+	
 		</div>
+									
 		<div id="contentwrap">
+					<div>
+		<!-- FT Edit: If the user is going through the wizard, display the progress bar -->
+		<?php
+
+				echo $progressBar;
+			
+		?>
+	</div>
 			<div id="content">
+
 
 <!--The remaining content follows here in the page that included this template file. The footer.php file then closes off any block elements that remain open-->

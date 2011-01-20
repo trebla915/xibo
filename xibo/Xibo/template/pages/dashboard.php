@@ -84,10 +84,10 @@ END;
 					<span class="dash_text">Schedule Displays</span></a>
 				</div>
 				<?php
-					if ($_SESSION['usertype']==1)
+					/*if ($_SESSION['usertype']==1)
 					{
 						echo 'Emergency button <a href = "emergency.class.php">here</a>';
-					}
+					} that this out for now*/
 				?>
 			</div>
 	</div>
