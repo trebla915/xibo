@@ -636,7 +636,7 @@ END;
 		//<div class="info_table">
 		//FT edit: instead of a table, generate a list of layouts
 		$output = <<<END
-		
+		<b>Click on a layout to edit.</b>
 		<FORM NAME="nav">
 		<SELECT size = "20" MULTIPLE NAME="SelectURL" onChange= "document.location.href=document.nav.SelectURL.options[document.nav.SelectURL.selectedIndex].value">
 END;

@@ -23,7 +23,8 @@
 @import url(calendar.css);
 
 body {
-	background: url(../../img/headerback.png) repeat-x;
+	background: url(../../img/ftimgs/background.png) repeat-y;
+	background-color: #b7c2d2;
 	font-size:76.1%;
 	font-family:Verdana, Arial, Helvetica, sans-serif;
 	margin:0;
@@ -275,7 +276,7 @@ th {
 
 #header {
 	text-align:center;
-    background: url(../../img/header.png) no-repeat;
+    /*background: url(../../img/header.png) no-repeat;*/
     color:#FFF;
     height: 55px;
     width: 500px;
@@ -308,7 +309,9 @@ th {
     /*background:#E5F0FF;*/
     /*border-top:1px solid #003399;
 	border-bottom:1px solid #003399;*/
+	background-color: pink;
     clear: both;
+    font-size: 11px;
   
 }
 
@@ -420,7 +423,7 @@ dashschedule.strong{
 	position: -25px;
 }
 
-#dashbuttons{	
+#dashbuttons{   
 	text-align: center;
 }
 
@@ -430,7 +433,7 @@ dashschedule.strong{
 	float: left;
 	margin: 5px 5px;
 	padding: 35px;
-	
+        
 
 }
 
@@ -478,12 +481,13 @@ dashschedule.strong{
 
 /*form div's*/
 #form_container{
-	background: url(../../img/fades/E5F0FFback.png);
-	background: url(../../img/fades/formbodymiddle.png) #E2F0FF repeat-x;
+	/*background: url(../../img/fades/E5F0FFback.png);
+	background: url(../../img/fades/formbodymiddle.png) #E2F0FF repeat-x;*/
+	background-color: #ffffff;
 }
 
 #form_header {
-	background: url(../../img/fades/formheadmiddle.png);
+	background: url(../../img/ftimgs/bodybgtop.png);
 	background-repeat: repeat-x;
 	height: 35px;
 	margin-top: 0px;
@@ -493,7 +497,7 @@ dashschedule.strong{
 
 }
 #form_header_left{
-	background: url(../../img/fades/formheadleft.png);
+	background: url(../../img/ftimgs/bodybgtopleft.png);
 	background-repeat: no-repeat;
 	float:left;
 	width:40px;
@@ -505,7 +509,7 @@ dashschedule.strong{
 }
 
 #form_header_right{
-	background: url(../../img/fades/formheadright.png);
+	background: url(../../img/ftimgs/bodybgtopright.png);
 	background-repeat: no-repeat;
 	float: right;
 	width:20px;
@@ -542,7 +546,7 @@ dashschedule.strong{
 }
 
 #form_footer {
-	background: url(../../img/fades/formfootmiddle.png);
+	/*background: url(../../img/fades/formfootmiddle.png);*/
 	height: 75px;
 	margin-top: 0px;
 	margin-left: 0px;
@@ -552,8 +556,8 @@ dashschedule.strong{
 
 }
 #form_footer_left{
-	background: url(../../img/fades/formfootleft.png);
-	background-repeat: no-repeat;
+	/*background: url(../../img/fades/formfootleft.png);
+	background-repeat: no-repeat;*/
 	float:left;
 	width:40px;
 	height:75px;
@@ -563,8 +567,8 @@ dashschedule.strong{
 }
 
 #form_footer_right{
-	background: url(../../img/fades/formfootright.png);
-	background-repeat: no-repeat;
+	/*background: url(../../img/fades/formfootright.png);
+	background-repeat: no-repeat;*/
 	float: right;
 	width:40px;
 	height:75px;
