@@ -83,12 +83,7 @@ END;
 					<img class="dash_button" src="img/dashboard/scheduleview.png">
 					<span class="dash_text">Schedule Displays</span></a>
 				</div>
-				<?php
-					if ($_SESSION['usertype']==1)
-					{
-						echo 'Emergency button <a href = "emergency.class.php">here</a>';
-					}
-				?>
+				
 			</div>
 	</div>
 

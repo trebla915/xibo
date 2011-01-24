@@ -35,7 +35,7 @@
 }
 
 #headerback, #headerback a {
-	color: #003399;
+	color: #FFFFFF;
 }
 
 .FilterDiv {
@@ -94,7 +94,7 @@ button, .SecondNav a {
 	-moz-border-radius: 4px; -webkit-border-radius: 4px;
 	border: 1px solid #d3d3d3; 
 	background: #e6e6e6 url(../../3rdparty/jQuery/images/ui-bg_glass_75_e6e6e6_1x400.png) 50% 50% repeat-x; 
-	font-weight: normal; 
+	font-weight: bold; 
 	color: #555555; 
 	outline: none;
 	padding: 0.2em 0.6em 0.3em;
