@@ -25,6 +25,19 @@ $msgMediaDet	= __('Add media to the Library');
 $msgFilter		= __('Filter');
 $msgShowFilter	= __('Show Filter');
 
+//FT Edit: Added progress bar
+$progressBar = <<<END
+
+		<div align="center">
+			<img src = "img/progressbar/newprogressbar1.png" usemap = "#progressbar"></img>
+			<map name = "progressbar">
+				<area shape = "rect" href = "index.php?p=content&wizard=1" coords = "15,30,325,95" title="Upload Media"></area>
+				<area shape = "rect" href = "index.php?p=layout&wizard=1" coords = "326,30,650,95" title="Create Layout"></area>
+				<area shape = "rect" href = "index.php?p=schedule&wizard=1" coords = "651,30,970,95" title="Schedules Displays"></area>
+			</map>
+		</div>		
+END;
+
 //FT Edit:  Added next/back button
 $buttons = <<<END
 		<div class="SecondNav">
@@ -43,22 +56,22 @@ END;
 		</div>
 		<div id="form_header_right">
 		</div>
-	
-	
 	</div>
 	
 	<div id="form_body">
 		
-		
+		<!-- FT Edit: If the user is going through the wizard, display the progress bar -->
+		<?php
+			if( $_GET['wizard'] > 0 ) 
+			{
+				echo $progressBar;
+			}
+		?>
 		<div class="SecondNav">
 			<!-- Maybe at a later date we could have these buttons generated from the DB - and therefore passed through the security system ? -->
 			<ul>
-				<li>
-					<img src="img/forms/info_icon.gif" alt="Hover for more info" title="Click here to add media to the library."></img>
-					<a title="<?php echo $msgMediaDet; ?>" class="XiboFormButton" href="index.php?p=content&q=displayForms&sp=add" ><span><?php echo $msgMedia; ?></span></a></li>
-				<li>
-					<img src="img/forms/info_icon.gif" alt="Hover for more info" title="Click here to filter what media items are shown."></img>
-					<a title="<?php echo $msgShowFilter; ?>" href="#" onclick="ToggleFilterView('LibraryFilter')"><span><?php echo $msgFilter; ?></span></a></li>
+				<li><a title="<?php echo $msgMediaDet; ?>" class="XiboFormButton" href="index.php?p=content&q=displayForms&sp=add" ><span><?php echo $msgMedia; ?></span></a></li>
+				<li><a title="<?php echo $msgShowFilter; ?>" href="#" onclick="ToggleFilterView('LibraryFilter')"><span><?php echo $msgFilter; ?></span></a></li>
 			</ul>
 		</div>
 		<?php $this->LibraryFilter(); ?>
