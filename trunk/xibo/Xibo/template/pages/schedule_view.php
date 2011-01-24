@@ -20,6 +20,18 @@
  */
 defined('XIBO') or die("Sorry, you are not allowed to directly access this page.<br /> Please press the back button in your browser.");
 
+//FT Edit: Added progress bar
+$progressBar = <<<END
+
+		<div align="center">
+			<img src = "img/progressbar/newprogressbar3.png" usemap = "#progressbar"></img>
+			<map name = "progressbar">
+				<area shape = "rect" href = "index.php?p=content&wizard=1" coords = "15,30,325,95" title="Upload Media"></area>
+				<area shape = "rect" href = "index.php?p=layout&wizard=1" coords = "326,30,650,95" title="Create Layout"></area>
+				<area shape = "rect" href = "index.php?p=schedule&wizard=1" coords = "651,30,970,95" title="Schedules Displays"></area>
+			</map>
+		</div>		
+END;
 
 //FT Edit:  Added next/back button
 $buttons = <<<END
@@ -47,6 +59,14 @@ END;
 	</div>
 	
 	<div id="form_body">
+		<!-- FT Edit: If the user is going through the wizard, display the progress bar -->
+		<?php
+			if( $_GET['wizard'] > 0 ) 
+			{
+				echo $progressBar;
+			}
+		?>
+		
 		<table id="CalendarTable" width="100%" cellpadding=0 cellspacing=0>
 			<tr>
 				<td id="Nav">
@@ -54,7 +74,6 @@ END;
 						
 					</div>
 					<div id="Displays">
-					<img src="img/forms/info_icon.gif" alt="Hover for more info" title="Search for a display or a group of displays by its name"></img>
 						<?php echo $this->DisplayFilter(); ?>
 					</div>
 				</td>
