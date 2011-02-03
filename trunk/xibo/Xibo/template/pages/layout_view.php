@@ -24,19 +24,6 @@ $msgLayout		= __('Add Layout');
 $msgFilter		= __('Filter');
 $msgShowFilter	= __('Show Filter');
 
-//FT Edit: Added progress bar
-$progressBar = <<<END
-
-		<div align="center">
-			<img src = "img/progressbar/newprogressbar2.png" usemap = "#progressbar"></img>
-			<map name = "progressbar">
-				<area shape = "rect" href = "index.php?p=content&wizard=1" coords = "15,30,325,95" title="Upload Media"></area>
-				<area shape = "rect" href = "index.php?p=layout&wizard=1" coords = "326,30,650,95" title="Create Layout"></area>
-				<area shape = "rect" href = "index.php?p=schedule&wizard=1" coords = "651,30,970,95" title="Schedules Displays"></area>
-			</map>
-		</div>		
-END;
-
 //FT Edit:  Added next/back button
 $buttons = <<<END
 	<div class="SecondNav">
@@ -61,20 +48,23 @@ END;
 		<div id="form_header_right"></div>
 	</div>
 	<div id="form_body" >
-		<!-- FT Edit: If the user is going through the wizard, display the progress bar -->
-		<?php
-			if( $_GET['wizard'] > 0 ) 
-			{
-				$this->wizard = 1;
-				echo $progressBar;
-			}
-		?>
-		
 		<div class="SecondNav" >
 			<ul>
-			<li><a title="<?php echo $msgLayout; ?>" class="XiboFormButton" href="index.php?p=layout&q=displayForm" ><span><?php echo $msgLayout; ?></span></a></li>
-			<li><a href="index.php?p=layout&" ><span>Save</span></a></li>
-			<li><a href="index.php?p=dashboard&" ><span>Exit</span></a></li>
+			<li>
+				<img src="img/forms/info_icon.gif" alt="Hover for more info" title="Click this button to create a new layout."></img>
+				<a title="<?php echo $msgLayout; ?>" class="XiboFormButton" href="index.php?p=layout&q=displayForm" ><span><?php echo $msgLayout; ?></span></a></li>
+			<li>
+			<img src="img/forms/info_icon.gif" alt="Hover for more info" title="Click this button to save the current layout."></img>
+			<?php
+				if( $_GET['wizard'] > 0 ) 
+					echo "<a href='index.php?p=layout&wizard=1'><span>Save</span></a>";
+				else
+					echo "<a href='index.php?p=layout&'><span>Save</span></a>";
+			?>
+			</li>
+			<li>
+			<img src="img/forms/info_icon.gif" alt="Hover for more info" title="Click to exit the lay out designer."></img>
+			<a href="index.php?p=dashboard&" ><span>Exit</span></a></li>
 			</ul>
 		</div>
 			<table>		
@@ -101,9 +91,11 @@ END;
 						
 						<div class="formbody">
 						<!-- FT Edit:  If the user is not editing a layout don't display the designer-->
+						
 						<?php
 							if( $_GET['layoutid'] > 0 ) 
 							{
+								echo "<b>Right click to start editing this layout.</n>";
 								echo $this->RenderDesigner();
 							}	
 						?>

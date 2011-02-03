@@ -42,6 +42,46 @@ $helpLink 	= $help->Link();
 
 $datemanager	= new DateManager($db);
  
+ 
+ //FT Edit: Added progress bar
+$barImg = '';
+if( $_GET['p'] == "content" )
+{
+	$barImg= <<<END
+			<img src = "img/ftimgs/progressbarsmall1.png" usemap = "#progressbar"></img>
+END;
+	
+}
+else if( $_GET['p'] == "layout" )
+{
+	$barImg= <<<END
+			<img src = "img/ftimgs/progressbarsmall2.png" usemap = "#progressbar"></img>
+END;
+}
+else if( $_GET['p'] == "schedule" )
+{
+	$barImg= <<<END
+			<img src = "img/ftimgs/progressbarsmall3.png" usemap = "#progressbar"></img>
+END;
+}
+else
+{
+	$barImg= <<<END
+			<img src = "img/ftimgs/progressbarsmall0.png" usemap = "#progressbar"></img>
+END;
+}
+$progressBar = <<<END
+
+		<div align="center">
+			$barImg
+			<map name = "progressbar">
+				<area shape = "rect" href = "index.php?p=content&wizard=1" coords = "6,15,195,58" title="Upload Media"></area>
+				<area shape = "rect" href = "index.php?p=layout&wizard=1" coords = "196,15,392,58" title="Create Layout"></area>
+				<area shape = "rect" href = "index.php?p=schedule&wizard=1" coords = "393,15,586,58" title="Schedules Displays"></area>
+			</map>
+		</div>		
+END;
+ 
 ?>
 <!DOCTYPE html PUBLIC "-//W3C/DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -174,6 +214,14 @@ $datemanager	= new DateManager($db);
 			</ul>
 		</div>
 		<div id="contentwrap">
+					<div>
+		<!-- FT Edit: If the user is going through the wizard, display the progress bar -->
+		<?php
+
+				echo $progressBar;
+			
+		?>
+	</div>
 			<div id="content">
 
 <!--The remaining content follows here in the page that included this template file. The footer.php file then closes off any block elements that remain open-->
