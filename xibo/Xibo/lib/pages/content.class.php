@@ -273,19 +273,19 @@ END;
 				if ($mediatype == "image")
 				{
 					$mediatype = <<<END
-					<img src="img/forms/image.gif">
+					<img src="img/ftimgs/image.png">
 END;
 				}
 				else if ($mediatype == "powerpoint")
 				{
 					$mediatype = <<<END
-					<img src="img/forms/powerpoint.gif">
+					<img src="img/ftimgs/powerpoint.png">
 END;
 				}
 				else if ($mediatype == "video")
 				{
 					$mediatype = <<<END
-					<img src="img/forms/video.gif">
+					<img src="img/ftimgs/video.png">
 END;
 				}
 				$output .= "<td>$media</td>\n";
