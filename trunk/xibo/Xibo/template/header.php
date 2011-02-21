@@ -152,9 +152,9 @@ END;
 			</div>
 		</div>
 		<div id="navigation">
-			<ul id="nav">
+			<ul id="nav" >
 				<!-- FT Edit: added Wizard button -->
-				<li><a href="index.php?p=content&wizard=1">Get Started Here</a></li>
+				<li><a href="index.php?p=content&wizard=1" style = "color: #FFFFFF;">Get Started Here</a></li>
 				<?php
 					// FT Edit: removed the dashboard link;
 					// Always have access to your own homepage
@@ -197,8 +197,8 @@ END;
 								if ($p == $uri) $class = 'current ' . $class;
 								
 								$href = 'index.php?p=' . $uri . '&' . $args;
-							
-								echo '<li><a href="' . $href . '" class="' . $class . '">' . $title . '</a></li>';
+								//FT Edit: Changed font color and made it so the user can click on the area and not just the text
+								echo '<a href="' . $href . '" class="' . $class . '" style = "color: #FFFFFF;"><li>' . $title . '</li></a>';
 							}
 							
 							echo '</ul><a href="#" class="' . $class . '">' . $menuTitle . '</a></li>';

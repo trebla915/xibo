@@ -337,7 +337,7 @@ th {
 	padding: 0px 20px;
     height:20px;
     line-height:20px;
-    color:#003399;
+    color:#FFFFFF;
 }
 
 #navigation a:hover {
@@ -352,6 +352,7 @@ th {
  	background:#73A2D9;
  	border-bottom: 1px solid #003399;
  	list-style:none;
+ 	color: black;
 } 
 
 #navigation ul li {
@@ -379,7 +380,7 @@ th {
 }
 
 #navigation a.current {
-	color:red;
+	<!--color:red;-->
 }
 
 #check {

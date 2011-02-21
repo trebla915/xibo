@@ -287,6 +287,9 @@ END;
 
             $form = <<<FORM
             <div style="display:none"><iframe name="fileupload" width="1px" height="1px"></iframe></div>
+            
+            <div id="uploadProgress" style="display:none">
+                    <img src="img/loading.gif"><span style="padding-left:10px">You may fill in the form while your file is uploading.</span>
             <div>
                     <form id="file_upload" method="post" action="index.php?p=content&q=FileUpload" enctype="multipart/form-data" target="fileupload">
                             <input type="hidden" id="PHPSESSID" value="$sessionId" />
@@ -302,8 +305,9 @@ END;
                             </table>
                     </form>
             </div>
-            <div id="uploadProgress" style="display:none">
-                    <img src="img/loading.gif"><span style="padding-left:10px">You may fill in the form while your file is uploading.</span>
+
+                    
+                    
             </div>
             <form class="XiboForm" method="post" action="index.php?p=module&mod=$this->type&q=Exec&method=EditMedia">
                     <input type="hidden" name="hidFileID" id="hidFileID" value="" />
@@ -341,6 +345,8 @@ END;
                             </tr>
                     </table>
             </form>
+            
+            
 FORM;
 
             $this->response->html 		= $form;

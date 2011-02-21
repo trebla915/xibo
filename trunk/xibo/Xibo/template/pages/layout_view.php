@@ -27,13 +27,13 @@ $msgShowFilter	= __('Show Filter');
 //FT Edit:  Added next/back button
 $buttons = <<<END
 	<div class="SecondNav">
-			<div align="left">
+			<div style= "float:left">
 				<a title="Go back a step"  href="index.php?p=content&wizard=1">
 					<span>Back</span>
 				</a>
 			</div>	
 			
-			<div align="right">		
+			<div style= "float:right">		
 				<a title="Go to the next step"  href="index.php?p=schedule&wizard=1">
 					<span>Next</span>
 				</a>
@@ -51,10 +51,10 @@ END;
 		<div class="SecondNav" >
 			<ul>
 			<li>
-				<img src="img/forms/info_icon.gif" alt="Hover for more info" title="Click this button to create a new layout."></img>
+				<!--<img src="img/forms/info_icon.gif" alt="Hover for more info" title="Click this button to create a new layout."></img> -->
 				<a title="<?php echo $msgLayout; ?>" class="XiboFormButton" href="index.php?p=layout&q=displayForm" ><span><?php echo $msgLayout; ?></span></a></li>
 			<li>
-			<img src="img/forms/info_icon.gif" alt="Hover for more info" title="Click this button to save the current layout."></img>
+			<!-- <img src="img/forms/info_icon.gif" alt="Hover for more info" title="Click this button to save the current layout."></img> -->
 			<?php
 				if( $_GET['wizard'] > 0 ) 
 					echo "<a href='index.php?p=layout&wizard=1'><span>Save</span></a>";
@@ -63,11 +63,11 @@ END;
 			?>
 			</li>
 			<li>
-			<img src="img/forms/info_icon.gif" alt="Hover for more info" title="Click to exit the lay out designer."></img>
+			<!--  <img src="img/forms/info_icon.gif" alt="Hover for more info" title="Click to exit the lay out designer."></img>  -->
 			<a href="index.php?p=dashboard&" ><span>Exit</span></a></li>
 			</ul>
 		</div>
-			<table>		
+			<table id="table">		
 				<tr>
 					<td></td>
 					<td>
