@@ -135,6 +135,11 @@ class layoutDAO
 		return false;
 	}
 	
+	
+	function LayoutFilter2()
+	{
+		echo "hai";
+	}
 	function LayoutFilter($wizard) 
 	{
 		$this->wizard = 1;
@@ -705,7 +710,7 @@ END;
 				
 				$output .= <<<END
 				$title
-				<OPTION VALUE="index.php?p=layout&modify=true&layoutid=$layoutid"> $layout</option>
+				<OPTION VALUE="index.php?p=layout&modify=true&layoutid=$layoutid#table"> $layout</option>
 				
 END;
 				/*
@@ -1940,5 +1945,161 @@ END;
     	//echo $lib->LibraryFilter();
     	echo "hi";
     }
+	function LayoutGrid2() 
+	{
+		$db 		=& $this->db;
+		$user		=& $this->user;
+		$response	= new ResponseManager();
+		
+		$name = Kit::GetParam('filter_layout', _POST, _STRING, '');
+		setSession('layout', 'filter_layout', $name);
+		
+		// Sharing
+		$permissionid = Kit::GetParam('permissionid', _POST, _STRING, 'all');
+		setSession('layout', 'permissionid', $permissionid);
+		
+		// User ID
+		$filter_userid = Kit::GetParam('filter_userid', _POST, _STRING, 'all');
+		setSession('layout', 'filter_userid', $filter_userid);
+		
+		// Show retired
+		$filter_retired = $_REQUEST['filter_retired'];
+		setSession('layout', 'filter_userid', $filter_userid);
+		
+		// Tags list
+		$filter_tags = Kit::GetParam("filter_tags", _POST, _STRING);
+		setSession('layout', 'filter_tags', $filter_tags);
+		
+		$SQL = "";
+		$SQL .= "SELECT  layout.layoutID, ";
+		$SQL .= "        layout.layout, ";
+		$SQL .= "        layout.description, ";
+		$SQL .= "        layout.userID, ";
+		$SQL .= "        permission.permission, ";
+		$SQL .= "        permission.permissionID ";
+		$SQL .= "FROM    layout ";
+		$SQL .= "INNER JOIN permission ON layout.permissionID = permission.permissionID ";
+		$SQL .= "WHERE   1                   = 1";
+		//name filter
+		if ($name != "") 
+		{
+			$SQL.= " AND  (layout.layout LIKE '%" . sprintf('%s', $name) . "%') ";
+		}
+		//sharing filter
+		if ($permissionid != "all") 
+		{
+			$SQL .= sprintf(" AND (layout.permissionID = %d) ", $permissionid);
+		}
+		//owner filter
+		if ($filter_userid != "all") 
+		{
+			$SQL .= sprintf(" AND layout.userid = %d ", $filter_userid);
+		}
+		//retired options
+		if ($filter_retired == "1") 
+		{
+			$SQL .= " AND layout.retired = 1 ";
+		}
+		elseif ($filter_retired == "0") 
+		{
+			$SQL .= " AND layout.retired = 0 ";			
+		}
+		if ($filter_tags != "")
+		{
+			$SQL .= " AND layout.tags LIKE '%" . sprintf('%s', $filter_tags) . "%' ";
+		}
+
+		if(!$results = $db->query($SQL))
+		{
+			trigger_error($db->error());
+			trigger_error(__("An Unknown error occured when listing the layouts."), E_USER_ERROR);			
+		}
+
+		$output = <<<END
+		<div class="info_table">
+		<table style="width:100%">
+			<thead>
+				<tr>
+				<th>Name</th>
+				<th>Description</th>
+				<th>Permissions</th>
+				<th>Owner</th>
+				<th>Group</th>
+				<th>Action</th>	
+				</tr>
+			</thead>
+			<tbody>
+END;
+
+                $msgCopy = __('Copy');
+
+		while($aRow = $db->get_row($results)) 
+		{
+			//get the query results
+			$layout 		= Kit::ValidateParam($aRow[1], _STRING);
+			$description 	= Kit::ValidateParam($aRow[2], _STRING);
+			$layoutid 		= Kit::ValidateParam($aRow[0], _INT);
+			$userid 		= Kit::ValidateParam($aRow[3], _INT);
+			
+			//get the username from the userID using the user module
+			$username 		= $user->getNameFromID($userid);
+			$group			= $user->getGroupFromID($userid);
+			
+			//assess the permissions of each item
+			$permission		= Kit::ValidateParam($aRow[4], _STRING);
+			$permissionid	= Kit::ValidateParam($aRow[5], _INT);
+			
+			//get the permissions
+			list($see_permissions , $edit_permissions) = $user->eval_permission($userid, $permissionid);
+			
+			if ($see_permissions) 
+			{
+				if ($edit_permissions) 
+				{			
+					$title = <<<END
+					<tr ondblclick="return XiboFormRender('index.php?p=layoutp&q=displayForm&layoutid=$layoutid')">
+END;
+				}
+				else 
+				{
+					$msgNoPermission = __('You do not have permission to design this layout');
+					
+					$title = <<<END
+					<tr ondblclick="alert('$msgNoPermission')">
+END;
+				}
+				
+				$output .= <<<END
+				$title
+				<td>$layout</td>
+				<td>$description</td>
+				<td>$permission</td>
+				<td>$username</td>
+				<td>$group</td>
+END;
+				
+				if ($edit_permissions) 
+				{
+					$output .= '<td class="nobr">';
+					$output .= '<button href="index.php?p=layoutp&modify=true&layoutid=' . $layoutid . '" onclick="window.location = $(this).attr(\'href\')"><span>Design</span></button>';
+					$output .= '<button class="XiboFormButton" href="index.php?p=layoutp&q=displayForm&modify=true&layoutid=' . $layoutid . '"><span>Edit</span></button>';
+					$output .= '<button class="XiboFormButton" href="index.php?p=layoutp&q=CopyForm&layoutid=' . $layoutid . '&oldlayout=' . $layout . '"><span>' . $msgCopy . '</span></button>';
+					$output .= '<button class="XiboFormButton" href="index.php?p=layoutp&q=delete_form&layoutid=' . $layoutid . '"><span>Delete</span></button>';
+					$output .= '</td>';
+				}
+				else 
+				{
+					$output .= '<td class="centered">' . __('None') . '</td>';
+				}
+				
+				$output .= '</tr>';
+			}
+		}
+		$output .= '</tbody></table></div>';
+		
+		$response->SetGridResponse($output);
+		$response->Respond();
+	}
+    
 }
 ?>

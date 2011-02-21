@@ -24,13 +24,13 @@ defined('XIBO') or die("Sorry, you are not allowed to directly access this page.
 //FT Edit:  Added next/back button
 $buttons = <<<END
 	<div class="SecondNav">
-			<div align="left">
+			<div style= "float:left">
 				<a title="Go back a step"  href="index.php?p=layout&wizard=1">
 					<span>Back</span>
 				</a>
 			</div>	
 			
-			<div align="right">		
+			<div style= "float:right">		
 				<a title="Finish"  href="index.php?p=dashboard">
 					<span>Finish</span>
 				</a>

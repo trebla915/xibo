@@ -20,10 +20,10 @@
  */ 
 defined('XIBO') or die("Sorry, you are not allowed to directly access this page.<br /> Please press the back button in your browser.");
 
-$msgMedia		= __('Add Media');
-$msgMediaDet	= __('Add media to the Library');
+$msgMedia		= __('Upload Media');
+$msgMediaDet	= __('Click here to upload media to your library');
 $msgFilter		= __('Filter');
-$msgShowFilter	= __('Show Filter');
+$msgShowFilter	= __('Click here to sort the media in your library');
 
 //FT Edit:  Added next/back button
 $buttons = <<<END
@@ -54,11 +54,11 @@ END;
 			<!-- Maybe at a later date we could have these buttons generated from the DB - and therefore passed through the security system ? -->
 			<ul>
 				<li>
-					<img src="img/forms/info_icon.gif" alt="Hover for more info" title="Click here to add media to the library."></img>
-					<a title="<?php echo $msgMediaDet; ?>" class="XiboFormButton" href="index.php?p=content&q=displayForms&sp=add" ><span><?php echo $msgMedia; ?></span></a></li>
+					<!-- <img src="img/forms/info_icon.gif" alt="Hover for more info" title="Click here to add media to the library."></img> -->
+					<a title="<?php echo $msgMediaDet; ?>" class="XiboFormButton" href="index.php?p=content&q=displayForms&sp=add" style = "font-size: 16px;"><span><?php echo $msgMedia; ?></span></a></li>
 				<li>
-					<img src="img/forms/info_icon.gif" alt="Hover for more info" title="Click here to filter what media items are shown."></img>
-					<a title="<?php echo $msgShowFilter; ?>" href="#" onclick="ToggleFilterView('LibraryFilter')"><span><?php echo $msgFilter; ?></span></a></li>
+					<!-- <img src="img/forms/info_icon.gif" alt="Hover for more info" title="Click here to filter what media items are shown."></img> -->
+					<a title="<?php echo $msgShowFilter; ?>" href="#" onclick="ToggleFilterView('LibraryFilter')" style = "font-size: 16px;"><span><?php echo $msgFilter; ?></span></a></li>
 			</ul>
 		</div>
 		<?php $this->LibraryFilter(); ?>

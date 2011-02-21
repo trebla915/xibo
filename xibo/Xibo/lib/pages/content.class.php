@@ -228,7 +228,7 @@ HTML;
 			<thead>
 			    <tr>
 			        <th>$msgName</th>
-			        <th>$msgType </th>
+			        <th>$msgType</th>
 			        <th>h:mi:ss</th>            
 			        <th>$msgShared</th>       
 					<th>$msgOwner</th>
@@ -270,24 +270,6 @@ END;
 					$output .= '<tr ondblclick="alert(' . __('You do not have permission to edit this media') . ')">';
 				}
 				
-				if ($mediatype == "image")
-				{
-					$mediatype = <<<END
-					<img src="img/ftimgs/image.png">
-END;
-				}
-				else if ($mediatype == "powerpoint")
-				{
-					$mediatype = <<<END
-					<img src="img/ftimgs/powerpoint.png">
-END;
-				}
-				else if ($mediatype == "video")
-				{
-					$mediatype = <<<END
-					<img src="img/ftimgs/video.png">
-END;
-				}
 				$output .= "<td>$media</td>\n";
 		    	$output .= "<td>$mediatype</td>\n";
 		    	$output .= "<td>$length</td>\n";
