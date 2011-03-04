@@ -1099,7 +1099,7 @@ HTML;
 		$response		= new ResponseManager();
 		
 		$date			= Kit::GetParam('date', _GET, _INT, mktime(date('H'), 0, 0, date('m'), date('d'), date('Y')));
-		$dateText		= date("d/m/Y", $date);
+		$dateText		= date("m/d/Y", $date);
 		$displayGroupIDs	= Kit::GetParam('DisplayGroupIDs', _SESSION, _ARRAY);
 		
 		// need to do some user checking here
@@ -1252,15 +1252,15 @@ END;
             $isPriority = '';
         }
 		
-		$fromDtText	= date("d/m/Y", $fromDT);
+		$fromDtText	= date("m/d/Y", $fromDT);
 		$fromTimeText	= date("H:i", $fromDT);
-		$toDtText	= date("d/m/Y", $toDT);
+		$toDtText	= date("m/d/Y", $toDT);
 		$toTimeText	= date("H:i", $toDT);
 		$recToDtText	= '';
 		
 		if ($recType != '')
 		{
-			$recToDtText		= date("d/m/Y", $recToDT);
+			$recToDtText		= date("m/d/Y", $recToDT);
 		}
 		
 		// Check that we have permission to edit this event.

@@ -41,7 +41,6 @@ class layoutDAO
 	//background properties
 	private $backgroundImage;
 	private $backgroundColor;
-	public $wizard = 1;
 	/**
 	 * Layout Page Logic
 	 * @return 
@@ -140,9 +139,8 @@ class layoutDAO
 	{
 		echo "hai";
 	}
-	function LayoutFilter($wizard) 
+	function LayoutFilter() 
 	{
-		$this->wizard = 1;
 		$db 	=& $this->db;
 		
 		$layout = ""; //3
@@ -198,6 +196,7 @@ class layoutDAO
 			</form>
 		</div>
 END;
+	
 		
 		$id = uniqid();
 		
@@ -645,24 +644,8 @@ END;
 		<FORM NAME="nav">
 		<SELECT size = "20" MULTIPLE NAME="SelectURL" onChange= "document.location.href=document.nav.SelectURL.options[document.nav.SelectURL.selectedIndex].value">
 END;
-		
-	/*	$output = <<<END
-		<div class="info_table">
-		<table style="width:100%">
-			<thead>
-				<tr>
-				<th>Name</th>
-				<th>Description</th>
-				<th>Permissions</th>
-				<th>Owner</th>
-				<th>Group</th>
-				<th>Action</th>	
-				</tr>
-			</thead>
-			<tbody>
-END;*/
 
-                $msgCopy = __('Copy');
+        $msgCopy = __('Copy');
 
 		while($aRow = $db->get_row($results)) 
 		{
@@ -686,7 +669,8 @@ END;*/
 			if ($see_permissions) 
 			{
 				if ($edit_permissions) 
-				{			
+				{
+			
 					$title = <<<END
 					<tr ondblclick="return XiboFormRender('index.php?p=layout&q=displayForm&layoutid=$layoutid')">
 END;
@@ -699,45 +683,13 @@ END;
 					<ul ondblclick="alert('$msgNoPermission')">
 END;
 				}
-				//<OPTION href = "index.php?p=layout&modify=true&layoutid=' . $layoutid . '" onclick="window.location = $(this).attr(\'href\')">$layout</OPTION></a>
-				
-				
-				//FT Edit: if in wizard mode, make sure the user stays in the mode
-				if( $this->wizard > 0) 
-				{
-					$layoutid .= "&wizard=1";
-				}
+			
 				
 				$output .= <<<END
 				$title
 				<OPTION VALUE="index.php?p=layout&modify=true&layoutid=$layoutid#table"> $layout</option>
 				
 END;
-				/*
-				$output .= <<<END
-				$title
-				<td>$layout</td>
-				<td>$description</td>
-				<td>$permission</td>
-				<td>$username</td>
-				<td>$group</td>
-END;
-				
-				if ($edit_permissions) 
-				{
-					$output .= '<td class="nobr">';
-					$output .= '<button href="index.php?p=layout&modify=true&layoutid=' . $layoutid . '" onclick="window.location = $(this).attr(\'href\')"><span>Design</span></button>';
-					$output .= '<button class="XiboFormButton" href="index.php?p=layout&q=displayForm&modify=true&layoutid=' . $layoutid . '"><span>Edit</span></button>';
-					$output .= '<button class="XiboFormButton" href="index.php?p=layout&q=CopyForm&layoutid=' . $layoutid . '&oldlayout=' . $layout . '"><span>' . $msgCopy . '</span></button>';
-					$output .= '<button class="XiboFormButton" href="index.php?p=layout&q=delete_form&layoutid=' . $layoutid . '"><span>Delete</span></button>';
-					$output .= '</td>';
-				}
-				else 
-				{
-					$output .= '<td class="centered">' . __('None') . '</td>';
-				}
-				
-				$output .= '</tr>';*/
 			}
 		}
 		$output .= '</tbody></select></div></form>';

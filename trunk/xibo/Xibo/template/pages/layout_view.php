@@ -41,24 +41,55 @@ $buttons = <<<END
 	</div>				
 END;
 
+
+if( $_GET['layoutid'] > 0 ) 
+{
+	$otherButtons = <<<END
+	<div class="SecondNav">
+			<div style= "float:left">
+				<a title="Go back a step"  href="index.php?p=content&wizard=1">
+					<span>Back</span>
+				</a>
+			</div>	
+			
+			<div style= "float:right">		
+				<a title="Go to the next step"  href="index.php?p=schedule&wizard=1">
+					<span>Next</span>
+				</a>
+			</div>
+	</div>				
+END;
+
+	$layoutTitleAndButtons = <<<END
+	<div class="title">
+		<h4>Layout Design - $this->layout </h4>
+	</div>
+	<div class="formbody">
+			<div class='buttons'>
+			<a id="background_button" class="XiboFormButton" href="<?php echo $this->EditBackgroundHref(); ?>" title="Background"><div class="button_text">Background</div></a> 
+			<a id="edit_button" class="XiboFormButton" href="<?php echo $this->EditPropertiesHref(); ?>" title="Layout Properties"><div class="button_text">Properties</div></a> 		
+		</div>
+	</div>		
+END;
+
+
+}
+
 ?>
 <div id="form_container">
 	<div id="form_header">
 		<div id="form_header_left"></div>
 		<div id="form_header_right"></div>
 	</div>
-	<div id="form_body" >
-		<div class="SecondNav" >
+	<div id="form_body">
+		<div class="SecondNav">
 			<ul>
 			<li>
 				<!--<img src="img/forms/info_icon.gif" alt="Hover for more info" title="Click this button to create a new layout."></img> -->
-				<a title="<?php echo $msgLayout; ?>" class="XiboFormButton" href="index.php?p=layout&q=displayForm" ><span><?php echo $msgLayout; ?></span></a></li>
+				<a title="<?php echo $msgLayout; ?>" class="XiboFormButton" href="index.php?p=layout&q=displayForm" ><span><?php echo "New Layout"; ?></span></a></li>
 			<li>
 			<!-- <img src="img/forms/info_icon.gif" alt="Hover for more info" title="Click this button to save the current layout."></img> -->
 			<?php
-				if( $_GET['wizard'] > 0 ) 
-					echo "<a href='index.php?p=layout&wizard=1'><span>Save</span></a>";
-				else
 					echo "<a href='index.php?p=layout&'><span>Save</span></a>";
 			?>
 			</li>
@@ -67,25 +98,17 @@ END;
 			<a href="index.php?p=dashboard&" ><span>Exit</span></a></li>
 			</ul>
 		</div>
-			<table id="table">		
+		<div style="position:relative;left:  5%;width=200px">
+			<table id="table" style="position:static; background-color:#e2f0ff; width: 60%">		
 				<tr>
 					<td></td>
 					<td>
-						<div class="title">
-							<h4>Layout Design - <?php echo $this->layout ?></h4>
-						</div>
-						<div class="formbody">
-							<div class='buttons'>
-								<a id="background_button" class="XiboFormButton" href="<?php echo $this->EditBackgroundHref(); ?>" title="Background"><div class="button_text">Background</div></a> 
-								<a id="edit_button" class="XiboFormButton" href="<?php echo $this->EditPropertiesHref(); ?>" title="Layout Properties"><div class="button_text">Properties</div></a> 		
-							</div>
-						</div>
+						<?php echo $layoutTitleAndButtons ?>
 					</td>
 				</tr>
 				<tr>
 					<td>	
-						<?php $this->LayoutFilter(1);?>
-							
+						<?php $this->LayoutFilter();?>
 					</td>
 					<td>
 						
@@ -95,32 +118,25 @@ END;
 						<?php
 							if( $_GET['layoutid'] > 0 ) 
 							{
-								echo "<b>Right click to start editing this layout.</n>";
+								echo "<b>Right click to start editing this layout.</b>";
 								echo $this->RenderDesigner();
 							}	
 						?>
 						</div>
 					</td>
-					
-					<td></td>
 				</tr>		
 			</table>
+		</div>	
 			 
 		
 			<!-- FT Edit: If the user is going through the wizard, display next/back buttons -->
 			<?php
-				if( $_GET['wizard'] > 0 ) 
-				{
 					echo $buttons;
-				}
 			?>
-	
-			</div>
-		</div>
-		
 	<div id="form_footer">
 		<div id="form_footer_left">
 		</div>
 		<div id="form_footer_right">
 		</div>
+	</div>
 </div>
