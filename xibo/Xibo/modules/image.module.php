@@ -144,6 +144,22 @@ END;
 		$form = <<<FORM
 		<div style="display:none"><iframe name="fileupload" width="1px" height="1px"></iframe></div>
 		
+		<div>
+			<form id="file_upload" method="post" action="index.php?p=content&q=FileUpload" enctype="multipart/form-data" target="fileupload">
+				<input type="hidden" id="PHPSESSID" value="$sessionId" />
+				<input type="hidden" id="SecurityToken" value="$securityToken" />
+				<input type="hidden" name="MAX_FILE_SIZE" value="$this->maxFileSizeBytes" />
+				<table>
+					<tr>
+						<td><label for="file">Upload an Image.<span class="required"></span></label></td>
+						<td colspan="3">
+							<input type="file" name="media_file" onchange="fileFormSubmit();this.form.submit();" />
+						</td>
+					</tr>
+				</table>
+			</form>
+		</div>
+		
 		<div id="uploadProgress" style="display:none">
 			<img src="img/loading.gif"><span style="padding-left:10px">You may fill in the form while your file is uploading.</span>
 		</div>
@@ -154,10 +170,7 @@ END;
                         <input type="hidden" id="txtFileName" name="txtFileName" readonly="true" />
 			<input type="hidden" name="hidFileID" id="hidFileID" value="" />
 			<table width="100%">
-				<tr>
-					<td></td>
-					<td colspan="3">$save_button</td>
-				</tr>
+
 				<tr>
 		    		<td><label for="name" title="The name of the image. Leave this blank to use the file name">Name</label></td>
 		    		<td><input id="name" name="name" type="text"></td>
@@ -174,24 +187,13 @@ END;
 					<td></td>
 					<td>This form accepts: <span class="required">$this->validExtensionsText</span> files up to a maximum size of <span class="required">$this->maxFileSize</span>.</td>
 				</tr>
-				
+				<tr>
+					<td></td>
+					<td colspan="3">$save_button</td>
+				</tr>
 			</table>
 		</form>
-		<div>
-			<form id="file_upload" method="post" action="index.php?p=content&q=FileUpload" enctype="multipart/form-data" target="fileupload">
-				<input type="hidden" id="PHPSESSID" value="$sessionId" />
-				<input type="hidden" id="SecurityToken" value="$securityToken" />
-				<input type="hidden" name="MAX_FILE_SIZE" value="$this->maxFileSizeBytes" />
-				<table>
-					<tr>
-						<td><label for="file">Upload an Image.<span class="required"></span></label></td>
-						<td colspan="3">
-							<input type="file" name="media_file" onchange="fileFormSubmit();this.form.submit();" />
-						</td>
-					</tr>
-				</table>
-			</form>
-		</div>
+		
 FORM;
 
 		$this->response->html 			= $form;

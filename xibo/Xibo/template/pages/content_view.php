@@ -65,10 +65,7 @@ END;
 		
 		<!-- FT Edit: If the user is going through the wizard, display next/back buttons -->
 		<?php
-			if( $_GET['wizard'] > 0 ) 
-			{
 				echo $buttons;
-			}
 		?>
 			
 	</div>	
