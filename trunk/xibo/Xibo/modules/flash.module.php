@@ -132,10 +132,11 @@ END;
 			<input class="XiboFormButton" id="btnCancel" type="button" title="Close" href="index.php?p=content&q=displayForms&sp=add" value="Cancel" />
 END;
 		}
-
-		$form = <<<FORM
-		<div style="display:none"><iframe name="fileupload" width="1px" height="1px"></iframe></div>
-		<div>
+		//FT Edit: If the user is editing a layout then don't display the file broweser
+		$file = "";
+		if( $layoutid < 1 ) 
+		{
+			$file = <<<END
 			<form id="file_upload" method="post" action="index.php?p=content&q=FileUpload" enctype="multipart/form-data" target="fileupload">
 				<input type="hidden" id="PHPSESSID" value="$sessionId" />
 				<input type="hidden" id="SecurityToken" value="$securityToken" />
@@ -149,6 +150,12 @@ END;
 					</tr>
 				</table>
 			</form>
+END;
+		}
+		$form = <<<FORM
+		<div style="display:none"><iframe name="fileupload" width="1px" height="1px"></iframe></div>
+		<div>
+			$file
 		</div>
 		<div id="uploadProgress" style="display:none">
 			<img src="img/loading.gif"><span style="padding-left:10px">You may fill in the form while your file is uploading.</span>
