@@ -135,10 +135,6 @@ class layoutDAO
 	}
 	
 	
-	function LayoutFilter2()
-	{
-		echo "hai";
-	}
 	function LayoutFilter() 
 	{
 		$db 	=& $this->db;
