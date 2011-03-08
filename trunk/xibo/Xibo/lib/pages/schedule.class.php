@@ -1150,29 +1150,7 @@ END;
 		$rec_detail	= listcontent("1|1,2|2,3|3,4|4,5|5,6|6,7|7,8|8,9|9,10|10,11|11,12|12,13|13,14|14", "rec_detail");
 		$rec_range 	= '<input class="date-pick" type="text" id="rec_range" name="rec_range" />';
 		
-		$form .= <<<END
-		<tr>
-			<td colspan="3">
-				<fieldset title="If this event occurs again (e.g. repeats) on a schedule">
-					<legend>Recurrence Information</label>
-					<table>
-						<tr>
-							<td><label for="rec_type" title="What type of repeating is required">Repeats</label></td>
-							<td>$rec_type</td>
-						</tr>
-						<tr>
-							<td><label for="rec_detail" title="How often does this event repeat">Repeat every</label></td>
-							<td><input class="number" type="text" name="rec_detail" value="1" /></td>
-						</tr>
-						<tr>
-							<td><label for="rec_range" title="When should this event stop repeating?">Until</label></td>
-							<td>$rec_range</td>
-						</tr>
-					</table>
-				</fieldset>
-			</td>
-		</tr>
-END;
+		//FT Edit: removed recurrence information.  Functionality was not needed and the optinon confused users.
 
 		$form .= <<<END
 				</table>

@@ -65,7 +65,7 @@ END;
 				?>
 				<div class="dashicons">
 					<a id="content_button" alt="Get Started Here" href="index.php?p=content&wizard=1">
-					<img class="dash_button" src="img/dashboard/content.png?">
+					<img class="dash_button" src="img/dashboard/wizard.png?">
 					<span class="dash_text">Get Started Here</span></a>
 				</div>
 				<div class="dashicons">
@@ -79,7 +79,7 @@ END;
 					<span class="dash_text">Create Layout</span></a>
 				</div>
 				<div class="dashicons">
-					<a id="schedule_button" alt="Schedule Displays" href="index.php?p=schedule&">
+					<a id="schedule_button" alt="Publish to Displays" href="index.php?p=schedule&">
 					<img class="dash_button" src="img/dashboard/scheduleview.png">
 					<span class="dash_text">Schedule Displays</span></a>
 				</div>

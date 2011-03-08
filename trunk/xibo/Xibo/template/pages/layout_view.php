@@ -101,7 +101,7 @@ END;
 		<div style="position:relative;left:  5%;width=200px">
 			<table id="table" style="position:static; background-color:#e2f0ff; width: 60%">		
 				<tr>
-					<td></td>
+					<td ></td>
 					<td>
 						<?php echo $layoutTitleAndButtons ?>
 					</td>
